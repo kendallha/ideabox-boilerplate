@@ -5,7 +5,6 @@
   display: none;
 }
 
-
 .side-bar {
   height: 100%;
   width: 20%; /* Set the width of the sidebar */
@@ -17,15 +16,44 @@
   padding-top: 20px;
 }
 
+.show-starred {
+  width: 100%;
+  background: #363667;
+  color: #FFFFFF;
+  height: 3em;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+hr {
+  height: 1px;
+  background-color: #353567;
+  border: none;
+}
+
+label {
+  font-weight: bold;
+  float: left;
+}
+.idea-title {
+  width: 30%;
+  height: 3em;
+}
+.idea-body {
+  width: 30%;
+  height: 6em;
+}
+.search-bar{
+  height: 3em;
+}
+
 input[type=text]{
   width: 30%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: flex;
-  border: 1px solid #ccc;
+  /* padding: 12px 20px;
+  margin: 8px 0; */
+  border: 2px solid #5356A4;
   border-radius: 4px;
   box-sizing: border-box;
-
 }
 
 input[type=image] {
@@ -33,17 +61,31 @@ input[type=image] {
   width: 2em;
 }
 
+.save-button {
+  width: 30%;
+  margin: 8px 0;
+  background: #363667;
+  color: #FFFFFF;
+  height: 2.5em;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 2px solid #5356A4;
+  border-radius: 4px;
+}
+
 .idea-form {
   background-color: #A9AAD2;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   margin-left: 20%;
-  height: 35%;
+  height: 37em;
 }
 
 .idea-output {
+  height: 70em;
   background-color: #EAEAF4;
   width: 100%;
 }
