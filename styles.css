@@ -5,6 +5,7 @@
   display: none;
 }
 
+
 .side-bar {
   height: 100%;
   width: 20%; /* Set the width of the sidebar */
@@ -27,6 +28,10 @@ input[type=text]{
 
 }
 
+input[type=image] {
+  height: 2em;
+  width: 2em;
+}
 
 .idea-form {
   background-color: #A9AAD2;
@@ -35,10 +40,16 @@ input[type=text]{
   justify-content: center;
   flex-direction: column;
   margin-left: 20%;
+  height: 35%;
 }
 
 .idea-output {
   background-color: #EAEAF4;
+  width: 100%;
+}
+
+.idea-box {
+
 }
 
 .sections {
