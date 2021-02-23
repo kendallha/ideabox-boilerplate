@@ -1,3 +1,60 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
 .hidden {
   display: none;
+}
+
+.side-bar {
+  height: 100%;
+  width: 20%; /* Set the width of the sidebar */
+  position: fixed;; /* Fixed Sidebar (stay in place on scroll) */
+  top: 0;
+  left: 0;
+  background-color: #1F1F3D; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+input[type=text]{
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+
+
+.idea-form {
+  background-color: #A9AAD2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 20%;
+}
+
+.idea-output {
+  background-color: #EAEAF4;
+}
+
+.sections {
+  list-style-type: none;
+}
+
+.heading {
+  color: #E9E9F3;
+}
+
+.filter-starred {
+  color:#BFBFDD
+}
+
+.show-starred {
+  color: #E9E9F3;
+  background-color: #5356A4;
+
 }
