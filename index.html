@@ -9,23 +9,23 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
-    <nav class="side-bar">
+    <nav class="side-bar-container">
       <h1 class="heading">IdeaBox</h1>
-      <hr>
-      <ul class="sections">
-        <li class="filter-starred">Filter Starred Ideas</li>
-        <li class="show-starred">Show Starred Ideas</li>
-      </ul>
-      <hr>
+      <div class="side-bar">
+        <button class="filter-starred">Filter Starred Ideas</button>
+        <button class="show-starred">Show Starred Ideas</button>
+      </div>
     </nav>
-    <form class="idea-form">
-      <label for="title">Title</label>
-      <input class="idea-title" type="text" name="title"/>
-      <label for="body">Body</label>
-      <input class="idea-body" type="text" name="body"/>
-      <button class="save-button">Save</button>
-      <input class="search-bar" type="text"/>
-    </form>
+    <section class="form-container">
+      <form class="idea-form">
+        <label for="title">Title</label>
+        <input class="idea-title" type="text" name="title"/>
+        <label for="body">Body</label>
+        <input class="idea-body" type="text" name="body"/>
+        <button class="save-button">Save</button>
+        <input class="search-bar" type="text"/>
+      </form>
+    </section>
     <section class="idea-output">
       <article class="idea-box">
         <h2 class="idea-box-title"><h2>
