@@ -4,19 +4,42 @@ var titleInput = document.querySelector("#titleInput");
 var bodyInput = document.querySelector("#bodyInput");
 var ideaCardSection = document.querySelector("#ideaCardSection");
 //event listeners
-saveButton.addEventListener('click', createIdeaCard());
+
+saveButton.addEventListener('mouseover', enableSave);
+saveButton.addEventListener('click', createIdeaCard);
+//{
+  // event.preventDefault();
+// });
 //global variables
 var newIdea;
 var list = [];
 //functions
+function enableSave() {
+  if (!titleInput.value && !bodyInput.value) {
+    saveButton.disabled = true;
+    console.log(saveButton.disabled);
+  } else {
+    saveButton.disabled = false;
+    console.log(saveButton.disabled);
+  }
+}
+
 function createIdeaCard() {
   newIdea = new Idea(titleInput.value, bodyInput.value);
   list.push(newIdea);
   renderCards();
+  clearInputs();
 }
 
-renderCards() {
+function clearInputs() {
+  titleInput.value = "";
+  bodyInput.value = "";
+}
+
+function renderCards() {
+  event.preventDefault();
   ideaCardSection.innerHTML = "";
+  console.log()
   for (var i =0; i < list.length; i++) {
     ideaCardSection.innerHTML +=
     `<article id=${list[i].id} class="idea-box">
