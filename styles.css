@@ -16,6 +16,17 @@ body {
   background-color: #EAEAF4;
 }
 
+input[type=image] {
+  height: 3em;
+  width: 3em;
+}
+
+input[type=text]{
+  border: 2px solid #5356A4;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 /****** NAV + SIDEBAR ******/
 
 .side-bar-container {
@@ -31,6 +42,11 @@ body {
   background-color: #1F1F3D; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 2em;
+}
+
+.heading {
+  color: #E9E9F3;
+  margin-left: 24px;
 }
 
 .side-bar {
@@ -71,14 +87,29 @@ body {
   border-radius: 2px;
 }
 
-/* ***** INPUT FORM ***** */
+/****** INPUT FORM AREA ******/
 
-label {
-  font-size: 1.2em;
-  font-weight: bold;
-  align-self: flex-start;
-  justify-self: self-end;
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #A9AAD2;
+  height: 33em;
 }
+
+.idea-form {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin-left: 20%;
+  height: 37em;
+  max-width: 31em;
+}
+
+/****** INPUT FORM ELEMENTS ******/
+
 .idea-title {
   width: 38em;
   height: 5em;
@@ -88,21 +119,12 @@ label {
   height: 10em;
 }
 
-
-input[type=text]{
-  border: 2px solid #5356A4;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.search-bar{
-  width: 32.8em;
-  height: 5em;
-}
-
-input[type=image] {
-  height: 3em;
-  width: 3em;
+label {
+  font-size: 1.2em;
+  font-weight: bold;
+  align-self: flex-start;
+  justify-self: self-end;
+  margin-top: 24px;
 }
 
 .save-button {
@@ -118,25 +140,25 @@ input[type=image] {
   border-radius: 4px;
 }
 
-
-.idea-form {
+.search-container {
   display: flex;
-  align-items: stretch;
-  justify-content: space-evenly;
-  flex-direction: column;
-  margin-left: 20%;
-  height: 37em;
-  max-width: 31em;
+  flex-direction: row;
+  justify-self: center;
+  align-self: flex-start;
 }
 
-.form-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #A9AAD2;
-  height: 33em;
+.search-button {
+  padding: 1em;
+  background-color: #363667;
+  border-radius: 4px;
 }
+
+.search-bar{
+  width: 32.8em;
+  height: 5em;
+}
+
+/***** IDEABOX OUTPUT AREA ******/
 
 .idea-output-container {
   background-color: #EAEAF4;
@@ -154,17 +176,14 @@ input[type=image] {
   background-color: #EAEAF4;
 }
 
+/****** IDEA BOXES + ELEMENTS ******/
+
 .idea-box {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 2px solid #1F1F3D;
   border-radius: 2px;
-}
-
-.heading {
-  color: #E9E9F3;
-  margin-left: 24px;
 }
 
 .box-header {
@@ -218,15 +237,5 @@ p {
   cursor: pointer;
 }
 
-.search-button {
-  padding: 1em;
-  background-color: #363667;
-  border-radius: 4px;
-}
 
-.search-container {
-  display: flex;
-  flex-direction: row;
-  justify-self: center;
-  align-self: flex-start;
-}
+
