@@ -4,8 +4,8 @@ var titleInput = document.querySelector("#titleInput");
 var bodyInput = document.querySelector("#bodyInput");
 var ideaCardSection = document.querySelector("#ideaCardSection");
 //event listeners
-
-saveButton.addEventListener('mouseover', enableSave);
+saveButton.addEventListener('mouseleave', resetSave);
+saveButton.addEventListener('mouseenter', disableSave);
 saveButton.addEventListener('click', createIdeaCard);
 //{
   // event.preventDefault();
@@ -14,15 +14,22 @@ saveButton.addEventListener('click', createIdeaCard);
 var newIdea;
 var list = [];
 //functions
-function enableSave() {
-  if (!titleInput.value && !bodyInput.value) {
-    saveButton.disabled = true;
-    console.log(saveButton.disabled);
-  } else {
-    saveButton.disabled = false;
-    console.log(saveButton.disabled);
+// function resetSave() {
+//   console.log("MOUSE OFF");
+//   // saveButton.removeAttribute('disabled');
+//   saveButton.disabled = false;
+// }
+function unGrayButton() {
+  if (titleInput.value && bodyInput.value) {
+    
   }
 }
+// function disableSave() {
+//   if (!titleInput.value && !bodyInput.value) {
+//     saveButton.disabled = true;
+//     console.log(saveButton.disabled);
+//   }
+// }
 
 function createIdeaCard() {
   newIdea = new Idea(titleInput.value, bodyInput.value);
