@@ -4,32 +4,22 @@ var titleInput = document.querySelector("#titleInput");
 var bodyInput = document.querySelector("#bodyInput");
 var ideaCardSection = document.querySelector("#ideaCardSection");
 //event listeners
-saveButton.addEventListener('mouseleave', resetSave);
-saveButton.addEventListener('mouseenter', disableSave);
+bodyInput.addEventListener('input', enableSaveButton);
+titleInput.addEventListener('input', enableSaveButton);
 saveButton.addEventListener('click', createIdeaCard);
-//{
-  // event.preventDefault();
-// });
 //global variables
 var newIdea;
 var list = [];
 //functions
-// function resetSave() {
-//   console.log("MOUSE OFF");
-//   // saveButton.removeAttribute('disabled');
-//   saveButton.disabled = false;
-// }
-function unGrayButton() {
+function enableSaveButton() {
   if (titleInput.value && bodyInput.value) {
-    
+    saveButton.removeAttribute('disabled');
   }
 }
-// function disableSave() {
-//   if (!titleInput.value && !bodyInput.value) {
-//     saveButton.disabled = true;
-//     console.log(saveButton.disabled);
+// function unGrayButton() {
+//   if (titleInput.value && bodyInput.value) {
+//
 //   }
-// }
 
 function createIdeaCard() {
   newIdea = new Idea(titleInput.value, bodyInput.value);
