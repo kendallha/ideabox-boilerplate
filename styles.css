@@ -1,3 +1,4 @@
+/****** GLOBAL ******/
 * {
 margin: 0;
 padding: 0;
@@ -8,12 +9,14 @@ font-family: 'Open Sans', sans-serif;
 }
 
 .hidden {
-  display: none;
+  display: none!important;
 }
 
 body {
   background-color: #EAEAF4;
 }
+
+/****** NAV + SIDEBAR ******/
 
 .side-bar-container {
   display: flex;
@@ -68,11 +71,7 @@ body {
   border-radius: 2px;
 }
 
-hr {
-  height: 1px;
-  background-color: #353567;
-  border: none;
-}
+/* ***** INPUT FORM ***** */
 
 label {
   font-size: 1.2em;
@@ -88,18 +87,17 @@ label {
   width: 38em;
   height: 10em;
 }
-.search-bar{
-  width: 38em;
-  height: 5em;
-}
+
 
 input[type=text]{
-  /* width: 30%; */
-  /* padding: 12px 20px;
-  margin: 8px 0; */
   border: 2px solid #5356A4;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.search-bar{
+  width: 32.8em;
+  height: 5em;
 }
 
 input[type=image] {
@@ -108,12 +106,12 @@ input[type=image] {
 }
 
 .save-button {
-  width: 31.7em;
-  /* margin: 8px 0; */
+  min-width: 0;
+  width: 26.3em;
   background: #363667;
   color: #FFFFFF;
   height: 4em;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 1px;
   border: 2px solid #5356A4;
@@ -123,12 +121,12 @@ input[type=image] {
 
 .idea-form {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-evenly;
   flex-direction: column;
   margin-left: 20%;
   height: 37em;
-  width: 31em;
+  max-width: 31em;
 }
 
 .form-container {
@@ -154,8 +152,6 @@ input[type=image] {
   gap: 1.5em;
   height: 70em;
   background-color: #EAEAF4;
-
-  /* width: 100%; */
 }
 
 .idea-box {
@@ -220,4 +216,17 @@ p {
   margin: 0;
   padding: 0;
   cursor: pointer;
+}
+
+.search-button {
+  padding: 1em;
+  background-color: #363667;
+  border-radius: 4px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-self: flex-start;
 }
