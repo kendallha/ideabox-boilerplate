@@ -63,15 +63,15 @@ input[type=text]{
 }
 
 .filter-starred {
-    color: #BFBFDD;
-    background-color: #1F1F3D;
-    border: none;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    margin-left: 24px;
-    font-size: 1.1em;
-    font-weight: bold;
+  color: #BFBFDD;
+  background-color: #1F1F3D;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 24px;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
 .show-starred {
@@ -127,17 +127,30 @@ label {
   margin-top: 24px;
 }
 
-.save-button {
+.save-button[disabled] {
   min-width: 0;
   width: 26.3em;
-  background: #363667;
-  color: #FFFFFF;
+  background: #EAEAF4;
+  color: #778899;
   height: 4em;
   font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 1px;
+  border: 2px solid #778899;
+  border-radius: 4px;
+}
+
+.save-button {
+  background: #363667;
+  color: #FFFFFF;
   border: 2px solid #5356A4;
   border-radius: 4px;
+  min-width: 0;
+  width: 26.3em;
+  height: 4em;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .search-container {
@@ -176,7 +189,7 @@ label {
   background-color: #EAEAF4;
 }
 
-/****** IDEA BOXES + ELEMENTS ******/
+/* ***** IDEABOXES + ELEMENTS ***** */
 
 .idea-box {
   display: flex;
@@ -236,6 +249,3 @@ p {
   padding: 0;
   cursor: pointer;
 }
-
-
-

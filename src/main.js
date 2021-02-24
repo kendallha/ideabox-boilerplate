@@ -16,10 +16,6 @@ function enableSaveButton() {
     saveButton.removeAttribute('disabled');
   }
 }
-// function unGrayButton() {
-//   if (titleInput.value && bodyInput.value) {
-//
-//   }
 
 function createIdeaCard() {
   newIdea = new Idea(titleInput.value, bodyInput.value);
@@ -31,12 +27,12 @@ function createIdeaCard() {
 function clearInputs() {
   titleInput.value = "";
   bodyInput.value = "";
+  saveButton.setAttribute('disabled',true);
 }
 
 function renderCards() {
   event.preventDefault();
   ideaCardSection.innerHTML = "";
-  console.log()
   for (var i =0; i < list.length; i++) {
     ideaCardSection.innerHTML +=
     `<article id=${list[i].id} class="idea-box">
@@ -57,11 +53,3 @@ function renderCards() {
       </article>`
   }
 }
-//Iteration 2 pseudo code:
-// - save button should be greyed out until there is an input in the
-// title and body
-// - when title and body have input and save button is clicked:
-// - new object instance of idea class is created
-// - new card is created using newIdea object
-// - title and body inputs go back to blank
-// - page does not reload
