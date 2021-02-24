@@ -1,0 +1,241 @@
+/****** GLOBAL ******/
+* {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+vertical-align: baseline;
+font-family: 'Open Sans', sans-serif;
+}
+
+.hidden {
+  display: none!important;
+}
+
+body {
+  background-color: #EAEAF4;
+}
+
+input[type=image] {
+  height: 3em;
+  width: 3em;
+}
+
+input[type=text]{
+  border: 2px solid #5356A4;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/****** NAV + SIDEBAR ******/
+
+.side-bar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  width: 20%; /* Set the width of the sidebar */
+  position: fixed;; /* Fixed Sidebar (stay in place on scroll) */
+  top: 0;
+  left: 0;
+  background-color: #1F1F3D; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 2em;
+}
+
+.heading {
+  color: #E9E9F3;
+  margin-left: 24px;
+}
+
+.side-bar {
+  height: 10em;
+  width: 19em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  border: 3px solid #353567;
+  border-left: #353567;
+  border-right: #353567;
+  margin-top: 2em;
+}
+
+.filter-starred {
+    color: #BFBFDD;
+    background-color: #1F1F3D;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 24px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.show-starred {
+  margin-left: 24px;
+  background: #5356A4;
+  color: #E9E9F3;
+  height: 2.5em;
+  width: 80%;
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 3px solid #5356A4;
+  border-radius: 2px;
+}
+
+/****** INPUT FORM AREA ******/
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #A9AAD2;
+  height: 33em;
+}
+
+.idea-form {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin-left: 20%;
+  height: 37em;
+  max-width: 31em;
+}
+
+/****** INPUT FORM ELEMENTS ******/
+
+.idea-title {
+  width: 38em;
+  height: 5em;
+}
+.idea-body {
+  width: 38em;
+  height: 10em;
+}
+
+label {
+  font-size: 1.2em;
+  font-weight: bold;
+  align-self: flex-start;
+  justify-self: self-end;
+  margin-top: 24px;
+}
+
+.save-button {
+  min-width: 0;
+  width: 26.3em;
+  background: #363667;
+  color: #FFFFFF;
+  height: 4em;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 2px solid #5356A4;
+  border-radius: 4px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-self: flex-start;
+}
+
+.search-button {
+  padding: 1em;
+  background-color: #363667;
+  border-radius: 4px;
+}
+
+.search-bar{
+  width: 32.8em;
+  height: 5em;
+}
+
+/***** IDEABOX OUTPUT AREA ******/
+
+.idea-output-container {
+  background-color: #EAEAF4;
+}
+
+.idea-output {
+  margin-left: 19.25em;
+  margin-top: 1.5em;
+  margin-right: 1.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 24em;
+  gap: 1.5em;
+  height: 70em;
+  background-color: #EAEAF4;
+}
+
+/****** IDEA BOXES + ELEMENTS ******/
+
+.idea-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #1F1F3D;
+  border-radius: 2px;
+}
+
+.box-header {
+  background-color: #1F1F3D;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  height: 3em;
+}
+
+.box-body {
+  background-color: #FFFFFF;
+  color: #1F1F3D;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 18em;
+}
+
+.box-footer {
+  background-color: #5356A4;
+  color: #E9E9F3;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 3em;
+  border-top : 2px solid #1F1F3D;
+}
+
+.idea-box-title {
+  margin-left: 1em;
+}
+
+p {
+  margin-left: 1em;
+  display: flex;
+  overflow: scroll;
+  white-space: normal;
+  font-size: 1.6em;
+  font-weight: lighter;
+}
+
+.comment {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #FFFFFF;
+  background-color: #5356A4;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+

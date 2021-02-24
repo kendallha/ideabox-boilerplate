@@ -2,11 +2,121 @@
 <html lang="en">
   <head>
     <title>IdeaBox</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+      rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
-
+    <nav class="side-bar-container">
+      <h1 class="heading">IdeaBox</h1>
+      <div class="side-bar">
+        <button class="filter-starred">Filter Starred Ideas</button>
+        <button class="show-starred">Show Starred Ideas</button>
+      </div>
+    </nav>
+    <section class="form-container">
+      <form class="idea-form">
+        <label for="title">Title</label>
+        <input class="idea-title" type="text" name="title"/>
+        <label for="body">Body</label>
+        <input class="idea-body" type="text" name="body"/>
+        <button class="save-button">Save</button>
+        <div class="search-container">
+          <input type="image" class="search-button" src ="assets/icons/search.svg"></input>
+          <input class="search-bar" type="text"/>
+        </div>
+      </form>
+    </section>
+    <div class="idea-output-container">
+      <section class="idea-output">
+        <article class="idea-box">
+          <div class="box-header">
+            <input type="image" class="star hidden" src="assets/icons/star.svg"/>
+            <input type="image" class="star-active" src="assets/icons/star-active.svg"/>
+            <input type="image" class="delete" src="assets/icons/delete.svg"/>
+            <input type="image" class="delete-active hidden" src="assets/icons/delete-active.svg"/>
+          </div>
+          <div class="box-body">
+            <h2 class="idea-box-title">Idea Title</h2>
+            <p class="idea-box-body">skldjfklfj alkjdfkladj kasjdlkajdkol qopiweurioqruio fiojoijqiof Idea body. Don't ever play yourself. Every chance I get, I water plants, Lion! Cloth talk.</p>
+          </div>
+          <div class="box-footer">
+            <input type="image" class="comment-button" src="assets/icons/comment.svg"/>
+            <button class="comment">Comment</button>
+          </div>
+        </article>
+        <article class="idea-box">
+          <div class="box-header">
+            <input type="image" class="star hidden" src="assets/icons/star.svg" />
+            <input type="image" class="star-active" src="assets/icons/star-active.svg" />
+            <input type="image" class="delete" src="assets/icons/delete.svg" />
+            <input type="image" class="delete-active hidden" src="assets/icons/delete-active.svg" />
+          </div>
+          <div class="box-body">
+            <h2 class="idea-box-title">Idea Title</h2>
+            <p class="idea-box-body">Idea body. Don't ever play yourself. Every chance I get, I water plants, Lion! Cloth talk.
+            </p>
+          </div>
+          <div class="box-footer">
+            <input type="image" class="comment-button" src="assets/icons/comment.svg" />
+            <button class="comment">Comment</button>
+          </div>
+        </article>
+        <article class="idea-box">
+          <div class="box-header">
+            <input type="image" class="star hidden" src="assets/icons/star.svg" />
+            <input type="image" class="star-active" src="assets/icons/star-active.svg" />
+            <input type="image" class="delete" src="assets/icons/delete.svg" />
+            <input type="image" class="delete-active hidden" src="assets/icons/delete-active.svg" />
+          </div>
+          <div class="box-body">
+            <h2 class="idea-box-title">Idea Title</h2>
+            <p class="idea-box-body">Idea body. Don't ever play yourself. Every chance I get, I water plants, Lion! Cloth talk.
+            </p>
+          </div>
+          <div class="box-footer">
+            <input type="image" class="comment-button" src="assets/icons/comment.svg" />
+            <button class="comment">Comment</button>
+          </div>
+        </article>
+        <article class="idea-box">
+          <div class="box-header">
+            <input type="image" class="star hidden" src="assets/icons/star.svg" />
+            <input type="image" class="star-active" src="assets/icons/star-active.svg" />
+            <input type="image" class="delete" src="assets/icons/delete.svg" />
+            <input type="image" class="delete-active hidden" src="assets/icons/delete-active.svg" />
+          </div>
+          <div class="box-body">
+            <h2 class="idea-box-title">Idea Title</h2>
+            <p class="idea-box-body">Idea body. Don't ever play yourself. Every chance I get, I water plants, Lion! Cloth talk.
+            </p>
+          </div>
+          <div class="box-footer">
+            <input type="image" class="comment-button" src="assets/icons/comment.svg" />
+            <button class="comment">Comment</button>
+          </div>
+        </article>
+        <article class="idea-box">
+          <div class="box-header">
+            <input type="image" class="star hidden" src="assets/icons/star.svg" />
+            <input type="image" class="star-active" src="assets/icons/star-active.svg" />
+            <input type="image" class="delete" src="assets/icons/delete.svg" />
+            <input type="image" class="delete-active hidden" src="assets/icons/delete-active.svg" />
+          </div>
+          <div class="box-body">
+            <h2 class="idea-box-title">Idea Title</h2>
+            <p class="idea-box-body">Idea body. Don't ever play yourself. Every chance I get, I water plants, Lion! Cloth talk.
+            </p>
+          </div>
+          <div class="box-footer">
+            <input type="image" class="comment-button" src="assets/icons/comment.svg" />
+            <button class="comment">Comment</button>
+          </div>
+        </article>
+      </section>
+    </div>
     <script src="./src/main.js"></script>
   </body>
 </html>
