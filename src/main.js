@@ -42,7 +42,6 @@ function renderCards() {
     `<article id=${list[i].id} class="idea-box">
         <div class="box-header">
           <input type="image" id="${list[i].id}star" class="star" src="assets/icons/star.svg"/>
-          <input type="image" id="${list[i].id}starActive" class="star hidden" src="assets/icons/star-active.svg"/>
           <input type="image" id="${list[i].id}delete" class="delete" src="assets/icons/delete.svg"/>
           <input type="image" id="${list[i].id}deleteActive" class="delete hidden" src="assets/icons/delete-active.svg"/>
         </div>
@@ -58,19 +57,6 @@ function renderCards() {
   }
 }
 
-function changeStarColor(event) {
-  for (var i = 0; i < list.length; i++) {
-    if (list[i].star) {
-     var starSource = "./assets/star-active.svg";
-  } else {
-    var starSource = "./assets/star.svg";
-  }
-}
-}
-// function checkForStar() {
-//   if
-// }
-
 function deleteIdea(event) {
   var shortId = parseInt(event.target.id.replace(/[^0-9]/g,""));
   if (event.target.classList.contains("delete")) {
@@ -82,31 +68,35 @@ function deleteIdea(event) {
     }
   }
 }
-//1. function to see if HTML tag exists
-//2.
-//ON STAR CLICK:
-// star color changes
-// idea.star = true/false
 
-function favoriteIdea(event) {
+function favoriteIdea() {
+  changeStarColor(event);
+  updateStarStatus(event);
+}
+
+function changeStarColor() {
+  var star = event.target.closest("input");
   if (event.target.classList.contains("star")) {
-    event.target.closest("input").src = "assets/icons/star-active.svg";
-// var notStarred = event.target.querySelector(".star");
-// var starred = event.target.querySelector(".star-active");
-// notStarred.classList.toggle('hidden');
-// starred.classList.toggle('hidden');
-}
+    star.src = "assets/icons/star-active.svg";
+    star.className = "star-active";
+} else if (event.target.classList.contains("star-active")) {
+    star.src = "assets/icons/star.svg";
+    star.className = "star";
+  }
 }
 
-//if the class of what we clicked on is "star" (aka if we clicked
-//on the white star)--
-//create new query selector variables for star and star-active
-// use those query selectors to toggle the hidden class
+function updateStarStatus() {
+  var shortId = parseInt(event.target.id.replace(/[^0-9]/g,""));
+  for (var i = 0; i < list.length; i++) {
+    if (shortId === list[i].id) {
+      list[i].updateIdea();
+    }
+  }
+}
 
-// function makeFavorite() {
-//
-//       favoriteList.push(list[i]);
-//   }
-//
-//   }
+
+
+
+
+
 // }
