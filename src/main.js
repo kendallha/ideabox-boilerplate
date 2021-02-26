@@ -72,6 +72,7 @@ function makeFavorite() {
   }
 }
 
+
 // function deleteCard() {
 //   var shortId = event.target.id.substring(0, 13);
 //   for (var i = 0; i < list.length; i++) {
