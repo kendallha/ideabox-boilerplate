@@ -106,6 +106,7 @@ input[type=text]{
   margin-left: 20%;
   height: 37em;
   max-width: 31em;
+  padding-bottom: 20px;
 }
 
 /****** INPUT FORM ELEMENTS ******/
@@ -115,8 +116,14 @@ input[type=text]{
   height: 5em;
 }
 .idea-body {
+  /* swap to text area */
   width: 38em;
   height: 10em;
+  font-size: 20px;
+  display: flex;
+  justify-self: start;
+  align-self: start;
+  flex-wrap: nowrap;
 }
 
 label {
@@ -124,7 +131,8 @@ label {
   font-weight: bold;
   align-self: flex-start;
   justify-self: self-end;
-  margin-top: 24px;
+  padding-top: 18px;
+  color: #1F1F3D;
 }
 
 .save-button[disabled] {
@@ -132,7 +140,7 @@ label {
   width: 26.3em;
   background: #EAEAF4;
   color: #778899;
-  height: 4em;
+  height: 3em;
   font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 1px;
@@ -147,7 +155,7 @@ label {
   border-radius: 4px;
   min-width: 0;
   width: 26.3em;
-  height: 4em;
+  height: 3em;
   font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 1px;
@@ -169,6 +177,12 @@ label {
 .search-bar{
   width: 32.8em;
   height: 5em;
+}
+
+::placeholder {
+  padding-left: 10px;
+  font-size: 20px;
+  color: #A9AAD2;
 }
 
 /***** IDEABOX OUTPUT AREA ******/
@@ -239,6 +253,10 @@ p {
   font-weight: lighter;
 }
 
+p::-webkit-scrollbar {
+  display: none;
+}
+
 .comment {
   font-weight: bold;
   font-size: 1.2em;
@@ -249,3 +267,4 @@ p {
   padding: 0;
   cursor: pointer;
 }
+

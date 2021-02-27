@@ -1,8 +1,8 @@
 class Idea {
-  constructor(title, body) {
+  constructor(title, body, star) {
     this.title = title;
     this.body = body;
-    this.star = false;
+    this.star = star || false;
     this.id = Date.now();
   }
 
@@ -14,9 +14,13 @@ class Idea {
   //
   // }
   //
-  // updateIdea() {
-  //
-  // }
+  updateIdea() {
+    if (this.star) {
+      this.star = false;
+    } else {
+      this.star = true
+    }
+  }
 }
 
 // An idea.js file that contains an Idea class.
