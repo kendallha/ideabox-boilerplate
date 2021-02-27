@@ -3,17 +3,16 @@ var saveButton = document.querySelector("#saveButton");
 var titleInput = document.querySelector("#titleInput");
 var bodyInput = document.querySelector("#bodyInput");
 var ideaCardSection = document.querySelector("#ideaCardSection");
-
 //event listeners
 bodyInput.addEventListener('input', enableSaveButton);
 titleInput.addEventListener('input', enableSaveButton);
 saveButton.addEventListener('click', createIdeaCard);
 ideaCardSection.addEventListener('click', deleteIdea);
 ideaCardSection.addEventListener('click', favoriteIdea);
-// window.addEventListener('load', displayLocalIdeas);
+window.addEventListener('load', renderCards);
 //global variables
 var newIdea;
-var savedIdeas = [];
+var savedIdeas = localStorage.getItem("savedIdeas") ? JSON.parse(localStorage.getItem("savedIdeas")) : [];
 var favoriteList = [];
 //functions
 function enableSaveButton() {
@@ -38,6 +37,7 @@ function clearInputs() {
 
 function renderCards() {
   event.preventDefault();
+  console.log(savedIdeas);
   ideaCardSection.innerHTML = "";
   for (var i =0; i < savedIdeas.length; i++) {
     ideaCardSection.innerHTML +=
@@ -56,14 +56,16 @@ function renderCards() {
           <button id="buttonComment${savedIdeas[i].id}" class="comment">Comment</button>
         </div>
       </article>`
-  }
+    }
 }
 
 function deleteIdea(event) {
     for ( var i = 0; i < savedIdeas.length; i++) {
       if (event.target.classList.contains("delete") && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
         // savedIdeas[i].deleteFromStorage();
+        newIdea = new Idea; 
         savedIdeas.splice(i,1);
+        console.log(newIdea);
         newIdea.updateStorage();
         renderCards();
       }
@@ -88,10 +90,15 @@ function changeStarColor() {
 
 function updateStarStatus() {
   for (var i = 0; i < savedIdeas.length; i++) {
-    if ((event.target.classList.contains("star") || event.target.classList.contains("star-active")) && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
-      savedIdeas[i].updateIdea();
-      console.log(savedIdeas[i]);
-      savedIdeas[i].saveToStorage();
+    if ((event.target.classList.contains("star") || event.target.classList.contains("star-active")) 
+      && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) 
+    {
+      newIdea = new Idea;
+
+      newIdea.updateIdea();
+      console.log(newIdea);
+      // savedIdeas[i].saveToStorage();
+      newIdea.updateStorage();
     }
   }
 }
