@@ -58,16 +58,13 @@ function renderCards() {
 }
 
 function deleteIdea(event) {
-  var shortId = parseInt(event.target.id.replace(/[^0-9]/g,""));
-  if (event.target.classList.contains("delete")) {
     for ( var i = 0; i < savedIdeas.length; i++) {
-      if (shortId === savedIdeas[i].id) {
+      if (event.target.classList.contains("delete") && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
         savedIdeas.splice(i,1);
         renderCards();
       }
     }
   }
-}
 
 function favoriteIdea() {
   changeStarColor(event);
@@ -86,9 +83,8 @@ function changeStarColor() {
 }
 
 function updateStarStatus() {
-  var shortId = parseInt(event.target.id.replace(/[^0-9]/g,""));
   for (var i = 0; i < savedIdeas.length; i++) {
-    if (shortId === savedIdeas[i].id) {
+    if (event.target.classList.contains("star") && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
       savedIdeas[i].updateIdea();
     }
   }
