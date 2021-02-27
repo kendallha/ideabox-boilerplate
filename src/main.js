@@ -9,12 +9,37 @@ titleInput.addEventListener('input', enableSaveButton);
 saveButton.addEventListener('click', createIdeaCard);
 ideaCardSection.addEventListener('click', deleteIdea);
 ideaCardSection.addEventListener('click', favoriteIdea);
-window.addEventListener('load', renderCards);
+window.addEventListener('load', retrieveSavedIdeas);
 //global variables
 var newIdea;
-var savedIdeas = localStorage.getItem("savedIdeas") ? JSON.parse(localStorage.getItem("savedIdeas")) : [];
-var favoriteList = [];
+var savedIdeas = [];
+// Local Storage Functions
+function saveToStorage(idea) {
+    savedIdeas.push(idea);
+    var savedIdeasString = JSON.stringify(savedIdeas);
+    localStorage.setItem("savedIdeas", savedIdeasString);
+  }
+
+function updateStorage() {
+    var savedIdeasString = JSON.stringify(savedIdeas);
+    localStorage.setItem("savedIdeas", savedIdeasString);
+  }
 //functions
+function retrieveSavedIdeas() {
+  var savedIdeaString = localStorage.getItem("savedIdeas");
+  var parsedIdeaArray = JSON.parse(savedIdeaString) || [];
+  instantiateSavedIdeas(parsedIdeaArray);
+}
+
+function instantiateSavedIdeas(ideas) {
+  for (var i = 0; i < ideas.length; i++) {
+    ideas[i] = new Idea(ideas[i].title, ideas[i].body, ideas[i].star, ideas[i].id);
+    savedIdeas = ideas;
+    updateStorage();
+  };
+  renderCards();
+}
+
 function enableSaveButton() {
   if (titleInput.value && bodyInput.value) {
     saveButton.removeAttribute('disabled');
@@ -23,8 +48,7 @@ function enableSaveButton() {
 
 function createIdeaCard() {
   newIdea = new Idea(titleInput.value, bodyInput.value);
-  // savedIdeas.push(newIdea);
-  newIdea.saveToStorage();
+  saveToStorage(newIdea);
   renderCards();
   clearInputs();
 }
@@ -40,10 +64,17 @@ function renderCards() {
   console.log(savedIdeas);
   ideaCardSection.innerHTML = "";
   for (var i =0; i < savedIdeas.length; i++) {
+    if (savedIdeas[i].star) {
+      var starClass = "star-active";
+      var starSrc = "assets/icons/star-active.svg";
+    } else {
+      var starClass = "star";
+      var starSrc = "assets/icons/star.svg";
+    }
     ideaCardSection.innerHTML +=
     `<article id=${savedIdeas[i].id} class="idea-box">
         <div class="box-header">
-          <input type="image" id="${savedIdeas[i].id}star" class="star" src="assets/icons/star.svg"/>
+          <input type="image" id="${savedIdeas[i].id}star" class="${starClass}" src="${starSrc}"/>
           <input type="image" id="${savedIdeas[i].id}delete" class="delete" src="assets/icons/delete.svg"/>
           <input type="image" id="${savedIdeas[i].id}deleteActive" class="delete hidden" src="assets/icons/delete-active.svg"/>
         </div>
@@ -62,19 +93,16 @@ function renderCards() {
 function deleteIdea(event) {
     for ( var i = 0; i < savedIdeas.length; i++) {
       if (event.target.classList.contains("delete") && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
-        // savedIdeas[i].deleteFromStorage();
-        newIdea = new Idea; 
         savedIdeas.splice(i,1);
-        console.log(newIdea);
-        newIdea.updateStorage();
+        updateStorage();
         renderCards();
       }
     }
   }
 
 function favoriteIdea() {
-  changeStarColor(event);
   updateStarStatus(event);
+  changeStarColor(event);
 }
 
 function changeStarColor() {
@@ -91,23 +119,11 @@ function changeStarColor() {
 function updateStarStatus() {
   for (var i = 0; i < savedIdeas.length; i++) {
     if ((event.target.classList.contains("star") || event.target.classList.contains("star-active")) 
-      && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) 
+       && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) 
     {
-      newIdea = new Idea;
-
-      newIdea.updateIdea();
-      console.log(newIdea);
-      // savedIdeas[i].saveToStorage();
-      newIdea.updateStorage();
+      savedIdeas[i].updateIdea();
+      console.log(savedIdeas[i]);
+      updateStorage();
     }
   }
 }
-
-
-/*
--create getItemFromLocalStorage() method
--JSON.parse to turn each item into storable data
--after parsing each item, we want to push into array (parameter within method we write - written as savedPosters)
--repeat this for every key value in localStorage
--run renderPage to display all locally stored ideas
-*/

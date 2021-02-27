@@ -1,27 +1,15 @@
 class Idea {
-  constructor(title, body, star) {
+  constructor(title, body, star, id) {
     this.title = title;
     this.body = body;
     this.star = star || false;
-    this.id = Date.now();
+    this.id = id || Date.now();
   }
 
-  saveToStorage() {
-    savedIdeas.push(this);
-    var savedIdeasString = JSON.stringify(savedIdeas);
-    localStorage.setItem("savedIdeas", savedIdeasString);
-    // localStorage.setItem(this.id, ideaString);
-  }
-
-  updateStorage() {
-    var savedIdeasString = JSON.stringify(savedIdeas);
-    localStorage.setItem("savedIdeas", savedIdeasString);
-    // localStorage.setItem(this.id, ideaString);
-  }
   
-  deleteFromStorage() {
-    localStorage.removeItem(this.id);
-  }
+  // deleteFromStorage() {
+  //   localStorage.removeItem(this.id);
+  // }
   
   updateIdea() {
     if (this.star) {
