@@ -35,7 +35,7 @@ input[type=text]{
   justify-content: flex-start;
   align-items: flex-start;
   height: 100%;
-  width: 20%; /* Set the width of the sidebar */
+  width: 25%; /* Set the width of the sidebar */
   position: fixed;; /* Fixed Sidebar (stay in place on scroll) */
   top: 0;
   left: 0;
@@ -101,9 +101,9 @@ input[type=text]{
 .idea-form {
   display: flex;
   align-items: stretch;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-direction: column;
-  margin-left: 20%;
+  margin-left: 25%;
   height: 37em;
   max-width: 31em;
   padding-bottom: 20px;
@@ -112,18 +112,22 @@ input[type=text]{
 /****** INPUT FORM ELEMENTS ******/
 
 .idea-title {
-  width: 38em;
-  height: 5em;
+  width: 25.2em;
+  height: 3em;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 .idea-body {
-  /* swap to text area */
-  width: 38em;
-  height: 10em;
+  border: 2px solid #5356A4;
+  border-radius: 4px;
+  width: 25em;
+  height: 6em;
   font-size: 20px;
   display: flex;
   justify-self: start;
   align-self: start;
   flex-wrap: nowrap;
+  margin-bottom: 20px;
 }
 
 label {
@@ -131,13 +135,13 @@ label {
   font-weight: bold;
   align-self: flex-start;
   justify-self: self-end;
-  padding-top: 18px;
+  /* padding-top: 18px; */
   color: #1F1F3D;
 }
 
 .save-button[disabled] {
   min-width: 0;
-  width: 26.3em;
+  width: 26.2em;
   background: #EAEAF4;
   color: #778899;
   height: 3em;
@@ -146,6 +150,7 @@ label {
   letter-spacing: 1px;
   border: 2px solid #778899;
   border-radius: 4px;
+  margin-bottom: 20px;
 }
 
 .save-button {
@@ -154,11 +159,12 @@ label {
   border: 2px solid #5356A4;
   border-radius: 4px;
   min-width: 0;
-  width: 26.3em;
+  width: 26.2em;
   height: 3em;
   font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 1px;
+  margin-bottom: 20px;
 }
 
 .search-container {
@@ -169,14 +175,14 @@ label {
 }
 
 .search-button {
-  padding: 1em;
+  padding: .74em;
   background-color: #363667;
   border-radius: 4px;
 }
 
 .search-bar{
-  width: 32.8em;
-  height: 5em;
+  width: 33.2em;
+  height: 4.5em;
 }
 
 ::placeholder {
@@ -192,7 +198,7 @@ label {
 }
 
 .idea-output {
-  margin-left: 19.25em;
+  margin-left: 22em;
   margin-top: 1.5em;
   margin-right: 1.5em;
   display: grid;
