@@ -10,6 +10,7 @@ titleInput.addEventListener('input', enableSaveButton);
 saveButton.addEventListener('click', createIdeaCard);
 ideaCardSection.addEventListener('click', deleteIdea);
 ideaCardSection.addEventListener('click', favoriteIdea);
+// window.addEventListener('load', displayLocalIdeas);
 //global variables
 var newIdea;
 var savedIdeas = [];
@@ -23,10 +24,10 @@ function enableSaveButton() {
 
 function createIdeaCard() {
   newIdea = new Idea(titleInput.value, bodyInput.value);
-  savedIdeas.push(newIdea);
+  // savedIdeas.push(newIdea);
+  newIdea.saveToStorage();
   renderCards();
   clearInputs();
-  newIdea.saveToStorage();
 }
 
 function clearInputs() {
@@ -61,8 +62,9 @@ function renderCards() {
 function deleteIdea(event) {
     for ( var i = 0; i < savedIdeas.length; i++) {
       if (event.target.classList.contains("delete") && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
-        savedIdeas[i].deleteFromStorage();
+        // savedIdeas[i].deleteFromStorage();
         savedIdeas.splice(i,1);
+        newIdea.updateStorage();
         renderCards();
       }
     }
@@ -86,8 +88,19 @@ function changeStarColor() {
 
 function updateStarStatus() {
   for (var i = 0; i < savedIdeas.length; i++) {
-    if (event.target.classList.contains("star") && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
+    if ((event.target.classList.contains("star") || event.target.classList.contains("star-active")) && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
       savedIdeas[i].updateIdea();
+      console.log(savedIdeas[i]);
+      savedIdeas[i].saveToStorage();
     }
   }
 }
+
+
+/*
+-create getItemFromLocalStorage() method
+-JSON.parse to turn each item into storable data
+-after parsing each item, we want to push into array (parameter within method we write - written as savedPosters)
+-repeat this for every key value in localStorage
+-run renderPage to display all locally stored ideas
+*/

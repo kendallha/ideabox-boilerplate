@@ -7,8 +7,16 @@ class Idea {
   }
 
   saveToStorage() {
-    var ideaString = JSON.stringify(this);
-    localStorage.setItem(this.id, ideaString);
+    savedIdeas.push(this);
+    var savedIdeasString = JSON.stringify(savedIdeas);
+    localStorage.setItem("savedIdeas", savedIdeasString);
+    // localStorage.setItem(this.id, ideaString);
+  }
+
+  updateStorage() {
+    var savedIdeasString = JSON.stringify(savedIdeas);
+    localStorage.setItem("savedIdeas", savedIdeasString);
+    // localStorage.setItem(this.id, ideaString);
   }
   
   deleteFromStorage() {
