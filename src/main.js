@@ -26,6 +26,7 @@ function createIdeaCard() {
   savedIdeas.push(newIdea);
   renderCards();
   clearInputs();
+  newIdea.saveToStorage();
 }
 
 function clearInputs() {
@@ -60,6 +61,7 @@ function renderCards() {
 function deleteIdea(event) {
     for ( var i = 0; i < savedIdeas.length; i++) {
       if (event.target.classList.contains("delete") && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
+        savedIdeas[i].deleteFromStorage();
         savedIdeas.splice(i,1);
         renderCards();
       }

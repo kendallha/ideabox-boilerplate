@@ -6,14 +6,15 @@ class Idea {
     this.id = Date.now();
   }
 
-  // saveToStorage() {
-  //
-  // }
-  //
-  // deleteFromStorage() {
-  //
-  // }
-  //
+  saveToStorage() {
+    var ideaString = JSON.stringify(this);
+    localStorage.setItem(this.id, ideaString);
+  }
+  
+  deleteFromStorage() {
+    localStorage.removeItem(this.id);
+  }
+  
   updateIdea() {
     if (this.star) {
       this.star = false;
