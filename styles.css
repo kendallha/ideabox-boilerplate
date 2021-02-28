@@ -221,6 +221,7 @@ label {
   justify-content: space-between;
   align-content: center;
   height: 3em;
+  flex-wrap: wrap;
 }
 
 .box-body {
@@ -230,6 +231,7 @@ label {
   flex-direction: column;
   justify-content: space-around;
   height: 18em;
+  flex-wrap: wrap;
 }
 
 .box-footer {
@@ -269,4 +271,3 @@ p::-webkit-scrollbar {
   padding: 0;
   cursor: pointer;
 }
-
