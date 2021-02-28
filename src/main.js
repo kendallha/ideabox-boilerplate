@@ -5,7 +5,7 @@ var bodyInput = document.querySelector("#bodyInput");
 var ideaCardSection = document.querySelector("#ideaCardSection");
 var showStarredButton = document.querySelector("#showStarred");
 var showAllIdeasButton = document.querySelector("#showAll");
-var searchBarInput = 
+var searchBarInput = document.querySelector("#searchBar");
 //event listeners
 bodyInput.addEventListener('input', enableSaveButton);
 titleInput.addEventListener('input', enableSaveButton);
@@ -14,6 +14,7 @@ ideaCardSection.addEventListener('click', deleteIdea);
 ideaCardSection.addEventListener('click', favoriteIdea);
 showStarredButton.addEventListener('click', displayStarredIdeas);
 showAllIdeasButton.addEventListener('click', displayAllIdeas);
+searchBarInput.addEventListener('keyup', displayFilteredIdeas);
 window.addEventListener('load', retrieveSavedIdeas);
 //global variables
 var newIdea;
@@ -55,7 +56,6 @@ function createIdeaCard() {
 
 function renderCards(ideasArray) {
   event.preventDefault();
-  console.log(ideasArray);
   ideaCardSection.innerHTML = "";
   for (var i = 0; i < ideasArray.length; i++) {
     if (ideasArray[i].star) {
@@ -129,7 +129,6 @@ function updateStarStatus() {
        && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id))
     {
       savedIdeas[i].updateIdea();
-      console.log(savedIdeas[i]);
       updateStorage();
     }
   }
@@ -157,12 +156,15 @@ function displayAllIdeas() {
   toggle(showStarredButton);
 }
 
-//create query selector variable for search input box
-//add event listener to this variable for keyup
-//write function for filtering cards shown
-// declare new variable filteredIdeas = [];
-// declare new variable searchString = event.target.value
-// iterate through savedIdeas array
-// for each iteration, evaluate if savedIdeas[i].includes(searchString)
-// if it does include the searchString, push [i] to filteredIdeas array
-// invoke renderCards(filteredIdeas)
+function displayFilteredIdeas(event) {
+  var filteredIdeas = [];
+  var searchString = event.target.value.toLowerCase();
+  for (var i = 0; i <savedIdeas.length; i++) {
+    var lowerCaseTitle = savedIdeas[i].title.toLowerCase();
+    var lowerCaseBody = savedIdeas[i].body.toLowerCase();
+    if (lowerCaseTitle.includes(searchString) || lowerCaseBody.includes(searchString)) {
+      filteredIdeas.unshift(savedIdeas[i]);
+    }
+  }
+  renderCards(filteredIdeas);
+}
