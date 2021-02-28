@@ -12,8 +12,9 @@
     <nav class="side-bar-container">
       <h1 class="heading">IdeaBox</h1>
       <div class="side-bar">
-        <button class="filter-starred">Filter Starred Ideas</button>
-        <button class="show-starred">Show Starred Ideas</button>
+        <h3 class="filter-starred">Filter Starred Ideas</h3>
+        <button id="showStarred" class="show-starred" >Show Starred Ideas</button>
+        <button id="showAll" class="show-all hidden">Show All Ideas</button>
       </div>
     </nav>
     <section class="form-container">
@@ -21,7 +22,7 @@
         <label for="title">Title</label>
         <input id="titleInput" class="idea-title" type="text" name="title"/>
         <label for="body">Body</label>
-        <input id="bodyInput" class="idea-body" type="text" name="body"/>
+        <textarea id="bodyInput" class="idea-body" name="body"></textarea>
         <button id="saveButton" class="save-button" disabled>Save</button>
         <div class="search-container">
           <input type="image" class="search-button" src ="assets/icons/search.svg"/>

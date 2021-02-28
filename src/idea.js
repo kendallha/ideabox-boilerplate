@@ -1,19 +1,11 @@
 class Idea {
-  constructor(title, body, star) {
+  constructor(title, body, star, id) {
     this.title = title;
     this.body = body;
     this.star = star || false;
-    this.id = Date.now();
+    this.id = id || Date.now();
   }
 
-  // saveToStorage() {
-  //
-  // }
-  //
-  // deleteFromStorage() {
-  //
-  // }
-  //
   updateIdea() {
     if (this.star) {
       this.star = false;
