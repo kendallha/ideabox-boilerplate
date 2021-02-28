@@ -4,6 +4,8 @@ var titleInput = document.querySelector("#titleInput");
 var bodyInput = document.querySelector("#bodyInput");
 var ideaCardSection = document.querySelector("#ideaCardSection");
 var showStarredButton = document.querySelector("#showStarred");
+var showAllIdeasButton = document.querySelector("#showAll");
+var searchBarInput = 
 //event listeners
 bodyInput.addEventListener('input', enableSaveButton);
 titleInput.addEventListener('input', enableSaveButton);
@@ -11,6 +13,7 @@ saveButton.addEventListener('click', createIdeaCard);
 ideaCardSection.addEventListener('click', deleteIdea);
 ideaCardSection.addEventListener('click', favoriteIdea);
 showStarredButton.addEventListener('click', displayStarredIdeas);
+showAllIdeasButton.addEventListener('click', displayAllIdeas);
 window.addEventListener('load', retrieveSavedIdeas);
 //global variables
 var newIdea;
@@ -122,8 +125,8 @@ function changeStarColor() {
 
 function updateStarStatus() {
   for (var i = 0; i < savedIdeas.length; i++) {
-    if ((event.target.classList.contains("star") || event.target.classList.contains("star-active")) 
-       && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) 
+    if ((event.target.classList.contains("star") || event.target.classList.contains("star-active"))
+       && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id))
     {
       savedIdeas[i].updateIdea();
       console.log(savedIdeas[i]);
@@ -132,7 +135,34 @@ function updateStarStatus() {
   }
 }
 
+function toggle(element) {
+  element.classList.toggle('hidden');
+}
+
 function displayStarredIdeas() {
   starredIdeas = [];
+  for (var i = 0; i < savedIdeas.length; i++) {
+    if (savedIdeas[i].star) {
+      starredIdeas.unshift(savedIdeas[i]);
+    }
+  }
   renderCards(starredIdeas);
+  toggle(showAllIdeasButton);
+  toggle(showStarredButton);
 }
+
+function displayAllIdeas() {
+  renderCards(savedIdeas);
+  toggle(showAllIdeasButton);
+  toggle(showStarredButton);
+}
+
+//create query selector variable for search input box
+//add event listener to this variable for keyup
+//write function for filtering cards shown
+// declare new variable filteredIdeas = [];
+// declare new variable searchString = event.target.value
+// iterate through savedIdeas array
+// for each iteration, evaluate if savedIdeas[i].includes(searchString)
+// if it does include the searchString, push [i] to filteredIdeas array
+// invoke renderCards(filteredIdeas)
