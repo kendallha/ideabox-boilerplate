@@ -6,11 +6,6 @@ class Idea {
     this.id = id || Date.now();
   }
 
-  
-  // deleteFromStorage() {
-  //   localStorage.removeItem(this.id);
-  // }
-  
   updateIdea() {
     if (this.star) {
       this.star = false;

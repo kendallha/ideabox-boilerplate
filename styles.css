@@ -35,7 +35,7 @@ input[type=text]{
   justify-content: flex-start;
   align-items: flex-start;
   height: 100%;
-  width: 25%; /* Set the width of the sidebar */
+  width: 21%; /* Set the width of the sidebar */
   position: fixed;; /* Fixed Sidebar (stay in place on scroll) */
   top: 0;
   left: 0;
@@ -64,17 +64,12 @@ input[type=text]{
 
 .filter-starred {
   color: #BFBFDD;
-  background-color: #1F1F3D;
-  border: none;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
   margin-left: 24px;
   font-size: 1.1em;
   font-weight: bold;
 }
 
-.show-starred {
+.show-starred, .show-all {
   margin-left: 24px;
   background: #5356A4;
   color: #E9E9F3;
@@ -85,6 +80,7 @@ input[type=text]{
   letter-spacing: 1px;
   border: 3px solid #5356A4;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 /****** INPUT FORM AREA ******/
