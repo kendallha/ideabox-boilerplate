@@ -1,32 +1,34 @@
 //query selector variables
-var saveButton = document.querySelector("#saveButton");
-var titleInput = document.querySelector("#titleInput");
 var bodyInput = document.querySelector("#bodyInput");
 var ideaCardSection = document.querySelector("#ideaCardSection");
+var saveButton = document.querySelector("#saveButton");
+var searchBarInput = document.querySelector("#searchBar");
+var showAllIdeasButton = document.querySelector("#showAll");
 var showStarredButton = document.querySelector("#showStarred");
+var titleInput = document.querySelector("#titleInput");
 //event listeners
 bodyInput.addEventListener('input', enableSaveButton);
-titleInput.addEventListener('input', enableSaveButton);
-saveButton.addEventListener('click', createIdeaCard);
 ideaCardSection.addEventListener('click', deleteIdea);
 ideaCardSection.addEventListener('click', favoriteIdea);
+saveButton.addEventListener('click', createIdeaCard);
+searchBarInput.addEventListener('keyup', displayFilteredIdeas);
+showAllIdeasButton.addEventListener('click', displayAllIdeas);
 showStarredButton.addEventListener('click', displayStarredIdeas);
+titleInput.addEventListener('input', enableSaveButton);
 window.addEventListener('load', retrieveSavedIdeas);
 //global variables
-var newIdea;
 var savedIdeas = [];
-var starredIdeas = [];
 // Local Storage Functions
 function saveToStorage(idea) {
-    savedIdeas.push(idea);
-    var savedIdeasString = JSON.stringify(savedIdeas);
-    localStorage.setItem("savedIdeas", savedIdeasString);
-  }
+  savedIdeas.push(idea);
+  var savedIdeasString = JSON.stringify(savedIdeas);
+  localStorage.setItem("savedIdeas", savedIdeasString);
+}
 
 function updateStorage() {
-    var savedIdeasString = JSON.stringify(savedIdeas);
-    localStorage.setItem("savedIdeas", savedIdeasString);
-  }
+  var savedIdeasString = JSON.stringify(savedIdeas);
+  localStorage.setItem("savedIdeas", savedIdeasString);
+}
 
 function retrieveSavedIdeas() {
   var savedIdeaString = localStorage.getItem("savedIdeas");
@@ -39,12 +41,12 @@ function instantiateSavedIdeas(ideas) {
     ideas[i] = new Idea(ideas[i].title, ideas[i].body, ideas[i].star, ideas[i].id);
     savedIdeas = ideas;
     updateStorage();
-  };
+  }
   renderCards(savedIdeas);
 }
 //functions
 function createIdeaCard() {
-  newIdea = new Idea(titleInput.value, bodyInput.value);
+  var newIdea = new Idea(titleInput.value, bodyInput.value);
   saveToStorage(newIdea);
   renderCards(savedIdeas);
   clearInputs();
@@ -52,7 +54,6 @@ function createIdeaCard() {
 
 function renderCards(ideasArray) {
   event.preventDefault();
-  console.log(ideasArray);
   ideaCardSection.innerHTML = "";
   for (var i = 0; i < ideasArray.length; i++) {
     if (ideasArray[i].star) {
@@ -122,17 +123,46 @@ function changeStarColor() {
 
 function updateStarStatus() {
   for (var i = 0; i < savedIdeas.length; i++) {
-    if ((event.target.classList.contains("star") || event.target.classList.contains("star-active")) 
-       && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) 
+    if ((event.target.classList.contains("star") || event.target.classList.contains("star-active"))
+       && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id))
     {
       savedIdeas[i].updateIdea();
-      console.log(savedIdeas[i]);
       updateStorage();
     }
   }
 }
 
+function toggle(element) {
+  element.classList.toggle('hidden');
+}
+
 function displayStarredIdeas() {
   starredIdeas = [];
+  for (var i = 0; i < savedIdeas.length; i++) {
+    if (savedIdeas[i].star) {
+      starredIdeas.unshift(savedIdeas[i]);
+    }
+  }
   renderCards(starredIdeas);
+  toggle(showAllIdeasButton);
+  toggle(showStarredButton);
+}
+
+function displayAllIdeas() {
+  renderCards(savedIdeas);
+  toggle(showAllIdeasButton);
+  toggle(showStarredButton);
+}
+
+function displayFilteredIdeas(event) {
+  var filteredIdeas = [];
+  var searchString = event.target.value.toLowerCase();
+  for (var i = 0; i <savedIdeas.length; i++) {
+    var lowerCaseTitle = savedIdeas[i].title.toLowerCase();
+    var lowerCaseBody = savedIdeas[i].body.toLowerCase();
+    if (lowerCaseTitle.includes(searchString) || lowerCaseBody.includes(searchString)) {
+      filteredIdeas.unshift(savedIdeas[i]);
+    }
+  }
+  renderCards(filteredIdeas);
 }
