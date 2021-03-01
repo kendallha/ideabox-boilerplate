@@ -4,6 +4,7 @@ class Idea {
     this.body = body;
     this.star = star || false;
     this.id = id || Date.now();
+    this.comments = [];
   }
 
   updateIdea() {

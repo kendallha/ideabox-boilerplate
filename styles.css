@@ -246,7 +246,7 @@ p::-webkit-scrollbar {
   display: none;
 }
 
-.comment {
+button.comment {
   font-weight: bold;
   font-size: 1.2em;
   color: #FFFFFF;
@@ -255,4 +255,8 @@ p::-webkit-scrollbar {
   margin: 0;
   padding: 0;
   /* cursor: pointer; */
+}
+
+.comment-section {
+  background-color: purple;
 }

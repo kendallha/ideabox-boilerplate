@@ -10,6 +10,7 @@ var titleInput = document.querySelector("#titleInput");
 bodyInput.addEventListener("keyup", enableSaveButton);
 ideaCardSection.addEventListener("click", deleteIdea);
 ideaCardSection.addEventListener("click", favoriteIdea);
+ideaCardSection.addEventListener("click", addComment);
 saveButton.addEventListener("click", createIdeaCard);
 searchBarInput.addEventListener("keyup", displayFilteredIdeas);
 showAllIdeasButton.addEventListener("click", displayAllIdeas);
@@ -19,6 +20,20 @@ window.addEventListener("load", retrieveSavedIdeas);
 //global variables
 var savedIdeas = [];
 // Local Storage Functions
+
+/*
+-figure out how to make querySelector / access comment button
+-put event listener on the card section
+-write function that says if event.target.classlist===comment, 
+  then insert HTML textbox into ideabox
+-user can type into text box, which will have save comment button
+-when user clicks save comment button, create new instance of comment class
+- + add comment object instance to this.comments array within idea instance
+- update local storage with appropriate comment values
+- then comment box will disappear
+-comment is then visible on card
+-rework to incorporate multiple comments
+  */
 function saveToStorage() {
   var savedIdeasString = JSON.stringify(savedIdeas);
   localStorage.setItem("savedIdeas", savedIdeasString);
@@ -68,10 +83,10 @@ function renderCards(ideasArray) {
         </div>
         <div class="box-body">
           <h2 class="idea-box-title">${ideasArray[i].title}</h2>
-          <p class="idea-box-body">${ideasArray[i].body}</p>
+          <p class="idea-box-body">${ideasArray[i].body}</p> 
         </div>
         <div class="box-footer">
-          <input type="image" id="comment" class="comment-button" src="assets/icons/comment.svg"/>
+          <input type="image" id="comment" class="comment" src="assets/icons/comment.svg"/>
           <button id="buttonComment" class="comment">Comment</button>
         </div>
       </article>`
@@ -125,6 +140,18 @@ function updateStarStatus() {
        && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id))
     {
       savedIdeas[i].updateIdea();
+      saveToStorage();
+    }
+  }
+}
+
+function addComment() {
+  for (var i = 0; i < savedIdeas.length; i++) {
+    if (event.target.classList.contains("comment") 
+    && parseInt(event.target.closest(".idea-box").id) === savedIdeas[i].id) {
+      var commentArea = document.createElement("textarea")
+      event.target.closest("article").appendChild(commentArea);
+      // ideaCardSection.appendChild(commentArea);
       saveToStorage();
     }
   }
