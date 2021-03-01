@@ -7,25 +7,19 @@ var showAllIdeasButton = document.querySelector("#showAll");
 var showStarredButton = document.querySelector("#showStarred");
 var titleInput = document.querySelector("#titleInput");
 //event listeners
-bodyInput.addEventListener('input', enableSaveButton);
-ideaCardSection.addEventListener('click', deleteIdea);
-ideaCardSection.addEventListener('click', favoriteIdea);
-saveButton.addEventListener('click', createIdeaCard);
-searchBarInput.addEventListener('keyup', displayFilteredIdeas);
-showAllIdeasButton.addEventListener('click', displayAllIdeas);
-showStarredButton.addEventListener('click', displayStarredIdeas);
-titleInput.addEventListener('input', enableSaveButton);
-window.addEventListener('load', retrieveSavedIdeas);
+bodyInput.addEventListener("keyup", enableSaveButton);
+ideaCardSection.addEventListener("click", deleteIdea);
+ideaCardSection.addEventListener("click", favoriteIdea);
+saveButton.addEventListener("click", createIdeaCard);
+searchBarInput.addEventListener("keyup", displayFilteredIdeas);
+showAllIdeasButton.addEventListener("click", displayAllIdeas);
+showStarredButton.addEventListener("click", displayStarredIdeas);
+titleInput.addEventListener("keyup", enableSaveButton);
+window.addEventListener("load", retrieveSavedIdeas);
 //global variables
 var savedIdeas = [];
 // Local Storage Functions
-function saveToStorage(idea) {
-  savedIdeas.push(idea);
-  var savedIdeasString = JSON.stringify(savedIdeas);
-  localStorage.setItem("savedIdeas", savedIdeasString);
-}
-
-function updateStorage() {
+function saveToStorage() {
   var savedIdeasString = JSON.stringify(savedIdeas);
   localStorage.setItem("savedIdeas", savedIdeasString);
 }
@@ -40,13 +34,15 @@ function instantiateSavedIdeas(ideas) {
   for (var i = 0; i < ideas.length; i++) {
     ideas[i] = new Idea(ideas[i].title, ideas[i].body, ideas[i].star, ideas[i].id);
     savedIdeas = ideas;
-    updateStorage();
+    saveToStorage();
   }
+
   renderCards(savedIdeas);
 }
 //functions
 function createIdeaCard() {
   var newIdea = new Idea(titleInput.value, bodyInput.value);
+  savedIdeas.push(newIdea);
   saveToStorage(newIdea);
   renderCards(savedIdeas);
   clearInputs();
@@ -63,20 +59,20 @@ function renderCards(ideasArray) {
       var starClass = "star";
       var starSrc = "assets/icons/star.svg";
     }
+
     ideaCardSection.innerHTML +=
       `<article id=${ideasArray[i].id} class="idea-box">
         <div class="box-header">
-          <input type="image" id="${ideasArray[i].id}star" class="${starClass}" src="${starSrc}"/>
-          <input type="image" id="${ideasArray[i].id}delete" class="delete" src="assets/icons/delete.svg"/>
-          <input type="image" id="${ideasArray[i].id}deleteActive" class="delete hidden" src="assets/icons/delete-active.svg"/>
+          <input type="image" id="star" class="${starClass}" src="${starSrc}"/>
+          <input type="image" id="delete" class="delete" src="assets/icons/delete.svg"/>
         </div>
         <div class="box-body">
           <h2 class="idea-box-title">${ideasArray[i].title}</h2>
           <p class="idea-box-body">${ideasArray[i].body}</p>
         </div>
         <div class="box-footer">
-          <input type="image" id="comment${ideasArray[i].id}" class="comment-button" src="assets/icons/comment.svg"/>
-          <button id="buttonComment${ideasArray[i].id}" class="comment">Comment</button>
+          <input type="image" id="comment" class="comment-button" src="assets/icons/comment.svg"/>
+          <button id="buttonComment" class="comment">Comment</button>
         </div>
       </article>`
   }
@@ -85,12 +81,14 @@ function renderCards(ideasArray) {
 function clearInputs() {
   titleInput.value = "";
   bodyInput.value = "";
-  saveButton.setAttribute('disabled', true);
+  saveButton.setAttribute("disabled", true);
 }
 
 function enableSaveButton() {
   if (titleInput.value && bodyInput.value) {
-    saveButton.removeAttribute('disabled');
+    saveButton.removeAttribute("disabled");
+  } else {
+    saveButton.setAttribute("disabled", true);
   }
 }
 
@@ -98,7 +96,7 @@ function deleteIdea(event) {
   for ( var i = 0; i < savedIdeas.length; i++) {
     if (event.target.classList.contains("delete") && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id)) {
       savedIdeas.splice(i,1);
-      updateStorage();
+      saveToStorage();
       renderCards(savedIdeas);
     }
   }
@@ -127,13 +125,13 @@ function updateStarStatus() {
        && (parseInt(event.target.closest(".idea-box").id)  === savedIdeas[i].id))
     {
       savedIdeas[i].updateIdea();
-      updateStorage();
+      saveToStorage();
     }
   }
 }
 
 function toggle(element) {
-  element.classList.toggle('hidden');
+  element.classList.toggle("hidden");
 }
 
 function displayStarredIdeas() {
@@ -143,6 +141,7 @@ function displayStarredIdeas() {
       starredIdeas.unshift(savedIdeas[i]);
     }
   }
+
   renderCards(starredIdeas);
   toggle(showAllIdeasButton);
   toggle(showStarredButton);
@@ -160,9 +159,10 @@ function displayFilteredIdeas(event) {
   for (var i = 0; i <savedIdeas.length; i++) {
     var lowerCaseTitle = savedIdeas[i].title.toLowerCase();
     var lowerCaseBody = savedIdeas[i].body.toLowerCase();
-    if (lowerCaseTitle.includes(searchString) || lowerCaseBody.includes(searchString)) {
-      filteredIdeas.unshift(savedIdeas[i]);
-    }
+      if (lowerCaseTitle.includes(searchString) || lowerCaseBody.includes(searchString)) {
+        filteredIdeas.unshift(savedIdeas[i]);
+      }
   }
+
   renderCards(filteredIdeas);
 }
