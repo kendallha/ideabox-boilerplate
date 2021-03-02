@@ -1,4 +1,4 @@
-//query selector variables
+
 var bodyInput = document.querySelector("#bodyInput");
 var ideaCardSection = document.querySelector("#ideaCardSection");
 var saveButton = document.querySelector("#saveButton");
@@ -6,7 +6,7 @@ var searchBarInput = document.querySelector("#searchBar");
 var showAllIdeasButton = document.querySelector("#showAll");
 var showStarredButton = document.querySelector("#showStarred");
 var titleInput = document.querySelector("#titleInput");
-//event listeners
+
 bodyInput.addEventListener("keyup", enableSaveButton);
 ideaCardSection.addEventListener("click", deleteIdea);
 ideaCardSection.addEventListener("click", favoriteIdea);
@@ -16,9 +16,9 @@ showAllIdeasButton.addEventListener("click", displayAllIdeas);
 showStarredButton.addEventListener("click", displayStarredIdeas);
 titleInput.addEventListener("keyup", enableSaveButton);
 window.addEventListener("load", retrieveSavedIdeas);
-//global variables
+
 var savedIdeas = [];
-// Local Storage Functions
+
 function saveToStorage() {
   var savedIdeasString = JSON.stringify(savedIdeas);
   localStorage.setItem("savedIdeas", savedIdeasString);
