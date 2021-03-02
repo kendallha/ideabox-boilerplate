@@ -14,9 +14,14 @@
 * [Click here to deploy demo](https://kendallha.github.io/ideabox-boilerplate/)
 
 ## Walkthrough:
-* ![GIF showing how to enter an idea](https://media.giphy.com/media/0VD2NcMwe3cXYrurre/giphy.gif)
-* ![GIF showing how to favorite or delete ideas](https://media.giphy.com/media/uPpYakOEqylSRAyFpn/giphy.gif)
-* ![GIF demonstrating Search Functionality](https://media.giphy.com/media/BVMhOMEvc4nBdedrh5/giphy.gif)
+
+* Type in your idea's Title & Body and click "Save" to create an Ideabox
+ ![GIF showing how to enter an idea](https://media.giphy.com/media/0VD2NcMwe3cXYrurre/giphy.gif)
+* Click stars to favorite ideas or click the X to delete
+* Click "Show Starred Ideas" to display all favorited ideas, toggle back with "Show All Ideas"
+ ![GIF showing how to favorite or delete ideas](https://media.giphy.com/media/uPpYakOEqylSRAyFpn/giphy.gif)
+* Use the search bar to filter your ideas. No need to hit enter or click here, it filters as you type!
+ ![GIF demonstrating Search Functionality](https://media.giphy.com/media/BVMhOMEvc4nBdedrh5/giphy.gif)
 
 ## Learning Goals
 * The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/ideabox-group.html)
